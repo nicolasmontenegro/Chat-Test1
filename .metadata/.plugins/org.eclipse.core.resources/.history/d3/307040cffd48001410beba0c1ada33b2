@@ -1,0 +1,21 @@
+import java.rmi.*;
+
+class ServidorChat{
+    @SuppressWarnings("deprecation")
+	static public void main (String args[]) throws RemoteException, AlreadyBoundException {
+        System.setSecurityManager(new RMISecurityManager());
+        try {
+        	ServicioChatImpl srv = new ServicioChatImpl();
+            Naming.rebind("rmi://localhost:222/Chat", srv);
+        }
+        catch (RemoteException e) {
+            System.err.println("Error de comunicacion: " + e.toString());
+            System.exit(1);
+        }
+        catch (Exception e) {
+            System.err.println("Excepcion en Servidor:");
+            e.printStackTrace();
+            System.exit(1);
+        }
+    }
+}

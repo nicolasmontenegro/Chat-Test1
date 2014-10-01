@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<launchConfiguration type="org.eclipse.jdt.launching.localJavaApplication">
+<listAttribute key="org.eclipse.debug.core.MAPPED_RESOURCE_PATHS">
+<listEntry value="/ChatServer/src/ClienteChat.java"/>
+</listAttribute>
+<listAttribute key="org.eclipse.debug.core.MAPPED_RESOURCE_TYPES">
+<listEntry value="1"/>
+</listAttribute>
+<booleanAttribute key="org.eclipse.jdt.launching.ATTR_USE_START_ON_FIRST_THREAD" value="true"/>
+<stringAttribute key="org.eclipse.jdt.launching.MAIN_TYPE" value="ClienteChat"/>
+<stringAttribute key="org.eclipse.jdt.launching.PROJECT_ATTR" value="ChatServer"/>
+<stringAttribute key="org.eclipse.jdt.launching.VM_ARGUMENTS" value="&quot;-Djava.security.policy=file:${workspace_loc}/ChatCliente/security.policy&quot; &quot;-Djava.rmi.server.codebase=file:${workspace_loc}/ChatCliente/bin/&quot;"/>
+</launchConfiguration>

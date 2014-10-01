@@ -1,0 +1,39 @@
+import java.rmi.*;
+import java.rmi.registry.LocateRegistry;
+import java.rmi.registry.Registry;
+
+import pkginterface.Constant;
+
+class ServidorChat{
+	
+	/**
+	* @param args the command line arguments
+	* @throws java.rmi.RemoteException
+	* @throws AlreadyBoundException
+	*/
+    @SuppressWarnings("deprecation")
+    
+    
+	static public void main (String args[]) throws RemoteException, AlreadyBoundException {
+    	
+    	
+    	ServicioChatImpl srv = new ServicioChatImpl();
+        Registry reg = LocateRegistry.createRegistry(Constant.RMI_PORT);
+        reg.bind(Constant.RMI_ID, srv);
+        System.out.println("Server is ready!");
+    	
+    	System.setSecurityManager(new RMISecurityManager());
+        try {
+            Naming.rebind("rmi://localhost:222/chat", srv);
+            
+            while(true)
+            {}
+        }
+        
+        catch (Exception e) {
+            System.err.println("Excepcion en Servidor:");
+            e.printStackTrace();
+            System.exit(1);
+        }
+    }
+}

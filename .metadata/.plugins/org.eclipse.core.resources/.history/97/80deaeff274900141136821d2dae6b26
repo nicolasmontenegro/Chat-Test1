@@ -1,0 +1,36 @@
+import java.util.*;
+import java.rmi.*;
+import java.rmi.server.*;
+
+import pkginterface.Cliente;
+import pkginterface.ServicioChat;
+    
+class ServicioChatImpl extends UnicastRemoteObject implements ServicioChat {
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	List<Cliente> l;
+    ServicioChatImpl() throws RemoteException {
+    	super();
+        l = new LinkedList<Cliente>();
+    }
+    
+    @Override
+    public void alta(Cliente c) throws RemoteException {
+        l.add(c);
+    }
+    
+    @Override
+    public void baja(Cliente c) throws RemoteException {
+        l.remove(l.indexOf(c));
+    }
+    
+    @Override
+    public void envio(Cliente esc, String apodo, String m)
+      throws RemoteException {
+        for (Cliente c: l) 
+            if (!c.equals(esc))
+                c.notificacion(apodo, m);
+    }
+}

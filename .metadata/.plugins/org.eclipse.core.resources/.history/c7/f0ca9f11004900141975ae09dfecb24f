@@ -1,0 +1,32 @@
+import java.rmi.*;
+
+class ServidorChat{
+	
+	/**
+	* @param args the command line arguments
+	* @throws java.rmi.RemoteException
+	* @throws AlreadyBoundException
+	*/
+    @SuppressWarnings("deprecation")
+    
+    
+	static public void main (String args[]) throws RemoteException, AlreadyBoundException {
+    	
+    	
+    	
+    	System.setSecurityManager(new RMISecurityManager());
+        try {
+        	ServicioChatImpl srv = new ServicioChatImpl();
+            Naming.rebind("rmi://192:222/Chat", srv);
+            
+            while(true)
+            {}
+        }
+        
+        catch (Exception e) {
+            System.err.println("Excepcion en Servidor:");
+            e.printStackTrace();
+            System.exit(1);
+        }
+    }
+}
